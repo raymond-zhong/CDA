@@ -15,33 +15,32 @@ for (var i =1; i<501; i++){
   }
   console.log(sum);
 
-  var array = [1, 5, 90, 25, -3, 0];
-  var min = array[0];
-  for (var i = 0; i < array.length; i++)
-    if (array[i] < min){
-      console.log(min);
-      min = array[i];
-    }
-    console.log(min);
+var array = [1, 5, 90, 25, -3, 0];
+var min = array[0];
+for (var i = 0; i < array.length; i++)
+  if (array[i] < min){
+    min = array[i];
+  }
+  console.log(min);
 
-    var avg = 0;
-    var sum = 0;
-    for (var i = 0; i < array.length; i++){
-        sum = sum + array[i];
-        console.log(sum);
-      }
-      avg = sum/array.length;
-      console.log(avg);
+var avg = 0;
+var sum = 0;
+for (var i = 0; i < array.length; i++){
+    sum = sum + array[i];
+    console.log(sum);
+  }
+  avg = sum/array.length;
+  console.log(avg);
 
-      var new_ninja = {
-       name: 'Jessica',
-       profession: 'coder',
-       favorite_language: 'JavaScript', //like that's even a question!
-       dojo: 'Dallas'
-      }
-      for (var key in new_ninja) {
-      if (new_ninja.hasOwnProperty(key)) {
-      console.log(key);
-      console.log(new_ninja[key]);
-      }
-      }
+var new_ninja = {
+ name: 'Jessica',
+ profession: 'coder',
+ favorite_language: 'JavaScript', //like that's even a question!
+ dojo: 'Dallas'
+}
+for (var key in new_ninja) {
+if (new_ninja.hasOwnProperty(key)) {
+console.log(key);
+console.log(new_ninja[key]);
+}
+}
