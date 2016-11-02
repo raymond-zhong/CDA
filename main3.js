@@ -10,6 +10,7 @@ var person = {
   }
 }
 
+
 function ninjaConstructor(name, cohort){
 var belts = ["yellow", "red", "black"]
 var ninja = {}
