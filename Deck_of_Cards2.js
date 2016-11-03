@@ -4,7 +4,6 @@ function Card(val,suit){
  }
  this.suit=suit;
  this.val=val;
- return this;
  }
 function Deck(){
   if (!(this instanceof Deck)) {
@@ -18,7 +17,7 @@ var range = ["A",2,3,4,5,6,7,8,9,10,"J","Q","K"];
      this.deckofcards.push(new Card(suits[i],range[j]));
    }}
   //  console.log(this.deck);
-   return this;
+  return this;
  }
 
 Deck.prototype.shuffle = function(){
@@ -49,6 +48,7 @@ function Player(name, deck){
   this.deckofcards = deck;
   this.name = name;
   this.hand = [];
+  return this;
 }
 
 Player1 = new Player();
@@ -69,14 +69,13 @@ Player.prototype.disgard = function(){
   console.log("Now your hand has the following card. =>", this.hand);
   // console.log(this.deckofcards);
   // console.log(Object.keys(this.deckofcards).length);
-  return this;
   // if this.hand.length == 0;{
   //   console.log("You now have an empyt hand.")
   // }
+  return this;
 }
 
 Deck1 = new Deck();
 Deck1.shuffle();
 Player1 = new Player("Raymond", Deck1);
-Player1.take();
-Player1.disgard();
+Player1.take().disgard();
