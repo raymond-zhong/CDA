@@ -1,0 +1,4 @@
+1. Render a survey form on index.ejs
+2. Allow user to fill out and submit form
+3. After the form is submitted sent user to /result
+4. Server takes in information from POST and renders submitted information on results.ejs

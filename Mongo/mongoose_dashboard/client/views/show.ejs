@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cat Form</title>
+</head>
+<body>
+  Cat show
+			<p>Cat Name:<%=  cat.name %></p>
+			<p>Weight: <%=  cat.weight %></p>
+			<p>Color: <%=  cat.color %></p>
+			<p><a href="/cat/<%=cat._id%>/edit"> Edit cat</a></p>
+			<p><a href="/"> Home</a></p>
+	    <form action="/cat/<%= cat._id %>/destroy" method="post">
+	  		<input type="submit" value="Delete">
+</body>
+</html>

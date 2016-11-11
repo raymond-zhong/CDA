@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cat Form</title>
+</head>
+<body>
+  <form action="/cat/new" method="get">
+		<input type="submit" value="Add New">
+	</form>
+  <h2>Here are all the cats:</h2>
+  <% for (idx in cats) { %>
+    <p>Name: <a href="/cat/<%= cats[idx]._id %>"><%= cats[idx].name %></a></p> <p><a href="/cat/<%=cats[idx]._id%>/edit"> Edit cat</a></p>
+    <form action="/cat/<%= cats[idx]._id %>/destroy" method="post">
+  		<input type="submit" value="Delete">
+  <% } %>
+</body>
+</html>

@@ -1,0 +1,12 @@
+*{
+	font-family: "Tahoma";
+	margin: 0px;
+	padding: 0px;
+	background-color: yellow;
+}
+#center{
+	padding: 50px;
+	border-style: solid;
+	border-color: black;
+	margin: 100px;
+}

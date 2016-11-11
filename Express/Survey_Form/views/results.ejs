@@ -1,0 +1,19 @@
+
+<head>
+       <title>Dojo Survey Results</title>
+       <link rel='styesheet' href="/css/style.css"/>
+    </head>
+  <body>
+  <div id ="center">
+    <h2>Submitted Info</h2>
+    <% { %>
+    <p>Name: <%= name %></p>
+    <p>Dojo Location: <%= location %></p>
+    <p>Favorite Language: <%= language %>!!!</p>
+    <p>Comment: <%= comment %></p>
+    <% } %>
+    <form action='/' method='GET'><input type="submit" value="Go Back" />
+	</form>
+  </div>
+  </body>
+</html>
