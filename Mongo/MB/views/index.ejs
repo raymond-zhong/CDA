@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Message Board</title>
+</head>
+<body>
+<h1> The Dojo Message Board </h1>
+<hr>
+<% if (typeof(errors) != 'undefined') { %>
+  <% for (var x in errors) { %>
+    <h3><%= errors[x].message %></h3>
+  <% } %>
+<% } %>
+  <form action="/message" method="post">
+    <p>Name:</br>
+    <input type="text" name="name"></br></p>
+    <p>Message:</br>
+    <textarea rows="4" cols="50" name="message"></textarea></br></p>
+    <input type="submit" value="Post Message">
+  </form>
+<% for (var idx in messages) { %>
+<div id="message">
+  <p>Name:<%=messages[idx].name %></br></p>
+  <p>Message:<%=messages[idx].message %></br></p>
+
+  <% for (var y of messages[idx].comments) { %>
+  <div id="comment">
+    <p>Name:<%= y.name %></br></p>
+    <p>Comment:<%= y.comment %></br></p>
+    <% } %>
+
+
+  </div>
+    <form action="/comment/<%=messages[idx]._id %>" method="post">
+      <p>Name:</br>
+      <input type="text" name="name">
+      <p>Comment:</br>
+      <textarea rows="4" cols="50" name="comment"></textarea></br></p>
+      <input type="submit" value="Post Comment">
+    </form>
+    <% } %>
+</div>
+</body>
+</html>
