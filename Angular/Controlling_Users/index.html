@@ -1,0 +1,79 @@
+<html>
+<head>
+  <title></title>
+  <script src='bower_components/angular/angular.js'></script>
+  <script type='text/javascript'>
+    var myApp = angular.module('myApp', []);
+    myApp.controller('usersController', ['$scope', function ($scope){
+      // we don't need a factory for this demo, it wouldn't make a difference if we did.
+        $scope.users = [
+          {
+            fname: "Yukihiro",
+            lname: "Matsumoto",
+            flang: "Ruby"
+          },
+          {
+            fname: "Ryan",
+            lname: "Dahl",
+            flang: "JavaScript"
+          },
+          {
+            fname: "Brendan",
+            lname: "Eich",
+            flang: "JavaScript"
+          },
+        ];
+        $scope.addUser = function(){
+          $scope.users.push($scope.newUser);
+          $scope.newUser = {};
+        }
+        // $scope.delUser = function(val){
+        //   console.log(val);
+        //   $scope.users.splice(val,1);
+        // }
+        $scope.delUser = function(userToDelete){
+          console.log(userToDelete);
+          $scope.users = $scope.users.filter(function(userObj){
+            return userObj !== userToDelete;
+          })
+        }
+    }])
+  </script>
+</head>
+<body ng-app='myApp'>
+Users Controller
+    <div ng-controller='usersController' style="padding:10px;border:1px solid black;">
+
+      <input type='text' placeholder="First Name " ng-model='newUser.fname'></br>
+      <input type='text' placeholder="Last Name" ng-model='newUser.lname'></br>
+      <input type="text" placeholder="Favorite Language" ng-model='newUser.flang'>
+      <input type="date" placeholder="Date" ng-model='newUser.date'></br>
+      <input type='submit' value='Create User' ng-click='addUser()'>
+      <hr>
+      Search Friends: <input type="text" ng-model="filter_all"></br>
+      <hr>
+      Sort by:</br>
+      <input type='text' placeholder="First Name" ng-model='search.fname'></br>
+      <input type='text' placeholder="Last Name" ng-model='search.lname'></br>
+      <input type="text" placeholder="Favorite Language" ng-model='search.flang'></br>
+      <input type="date" placeholder="Date" ng-model='search.date'>
+      <table style="width:100%;border-collapse: collapse">
+        <tr style="background-color: #dddddd">
+          <th style="padding:8px;border:1px solid black;text-align: left"><button ng-click ="fname">First Name</button></th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Last Name</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Fav Language</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Date</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Actions</th>
+
+        </tr>
+        <tr id="searchObjResults" ng-repeat="userObj in users | orderBy:'fname' | filter:filter_all track by $index ">
+          <td style="padding:8px;border:1px solid black;text-align: left">{{userObj.fname}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left">{{userObj.lname}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left">{{userObj.flang}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left">{{userObj.date | date:"MM/dd/yyyy" }}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left"><button ng-click = 'delUser(userObj)'>Delete User</button></td>
+        </tr>
+      </table>
+</div>
+</body>
+</html>
