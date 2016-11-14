@@ -1,0 +1,15 @@
+<div ng-controller='UserListController' style="padding:10px;border:1px solid black;">
+<table style="width:100%;border-collapse: collapse">
+  <tr style="background-color: #dddddd">
+    <th style="padding:8px;border:1px solid black;text-align: left">First Name</th>
+    <th style="padding:8px;border:1px solid black;text-align: left">Last Name</th>
+    <th style="padding:8px;border:1px solid black;text-align: left">Fav Language</th>
+
+  </tr>
+  <tr id="searchObjResults" ng-repeat="userObj in users track by $index ">
+    <td style="padding:8px;border:1px solid black;text-align: left">{{userObj.fname}}</td>
+    <td style="padding:8px;border:1px solid black;text-align: left">{{userObj.lname}}</td>
+    <td style="padding:8px;border:1px solid black;text-align: left">{{userObj.flang}}</td>
+  </tr>
+</table>
+</div>

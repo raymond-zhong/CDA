@@ -1,0 +1,22 @@
+Users Controller
+    <div ng-controller='CustomizeUsersController' style="padding:10px;border:1px solid black;">
+      <center><input type='text' placeholder="First Name " ng-model='newUser.fname'></center>
+      <center><input type='text' placeholder="Last Name" ng-model='newUser.lname'></center>
+      <center><input type="text" placeholder="Favorite Language" ng-model='newUser.flang'></center>
+      <center><input type='submit' value='Create User' ng-click='addUser()'></center>
+      <hr>
+      <table style="width:100%;border-collapse: collapse">
+        <tr style="background-color: #dddddd">
+          <th style="padding:8px;border:1px solid black;text-align: left">First Name</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Last Name</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Fav Language</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Actions</th>
+        </tr>
+        <tr id="searchObjResults" ng-repeat="userObj in users track by $index ">
+          <td style="padding:8px;border:1px solid black;text-align: left">{{userObj.fname}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left">{{userObj.lname}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left">{{userObj.flang}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left"><button ng-click = 'delUser($index)'>Delete User</button></td>
+        </tr>
+      </table>
+</div>

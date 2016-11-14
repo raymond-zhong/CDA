@@ -1,0 +1,24 @@
+{
+  "name": "y",
+  "description": "y",
+  "main": "y",
+  "authors": [
+    "y"
+  ],
+  "license": "y",
+  "keywords": [
+    "yy"
+  ],
+  "homepage": "https://github.com/raymond-zhong/CDA",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8"
+  }
+}
