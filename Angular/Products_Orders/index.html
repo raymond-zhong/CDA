@@ -1,0 +1,45 @@
+<html>
+<head>
+  <title>Product Orders</title>
+  <script src='bower_components/angular/angular.js'></script>
+  <script src='main.js'></script>
+</head>
+<body ng-app='app'>
+  Products Controller
+    <div ng-controller='productsController' style="padding:10px;border:1px solid black;">
+      <center><input type='text' placeholder="Product Name" ng-model='product.name'></center>
+      <center><input type='number' placeholder="Product Price" ng-model='product.price'></center>
+      <center><input type='submit' value='Add Product' ng-click='addProduct()'></center>
+      <hr>
+      <table style="width:100%;border-collapse: collapse">
+        <tr style="background-color: #dddddd">
+          <th style="padding:8px;border:1px solid black;text-align: left">Product Name</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Price</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Actions</th>
+        </tr>
+        <tr id="searchObjResults" ng-repeat="productObj in products track by $index ">
+          <td style="padding:8px;border:1px solid black;text-align: left">{{productObj.name}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left">{{productObj.price | currency:"$"}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left"><button ng-click = 'delProduct($index)'>Delete Product</button></td>
+        </tr>
+      </table>
+      </div>
+      Orders Controller
+      <div ng-controller='ordersController' style="padding:10px;border:1px solid black;">
+        <table style="width:100%;border-collapse: collapse">
+          <tr style="background-color: #dddddd">
+            <th style="padding:8px;border:1px solid black;text-align: left">Product Name</th>
+            <th style="padding:8px;border:1px solid black;text-align: left">Price</th>
+            <th style="padding:8px;border:1px solid black;text-align: left">Qty Avaliable</th>
+            <th style="padding:8px;border:1px solid black;text-align: left">Actions</th>
+          </tr>
+          <tr id="searchObjResults" ng-repeat="productObj in products track by $index ">
+            <td style="padding:8px;border:1px solid black;text-align: left">{{productObj.name}}</td>
+            <td style="padding:8px;border:1px solid black;text-align: left">{{productObj.price | currency:"$"}}</td>
+            <td style="padding:8px;border:1px solid black;text-align: left">{{productObj.qty}}</td>
+            <td style="padding:8px;border:1px solid black;text-align: left"><button ng-click = 'buyProduct($index)'>Buy Product</button></td>
+          </tr>
+        </table>
+</div>
+</body>
+</html>
