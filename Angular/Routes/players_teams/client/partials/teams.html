@@ -1,0 +1,15 @@
+<div ng-controller='TeamsController' style="padding:10px;border:1px solid black;">
+      <center>Name <input type='text' placeholder="Team Name" ng-model='newTeam.tname'>
+      <input type='submit' value='Add New Team' ng-click='addTeam()'></center>
+      <hr>
+      <table style="width:100%;border-collapse: collapse">
+        <tr style="background-color: #dddddd">
+          <th style="padding:8px;border:1px solid black;text-align: left">Name</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Actions</th>
+        </tr>
+        <tr id="searchObjResults" ng-repeat="playerObj in teams track by $index ">
+          <td style="padding:8px;border:1px solid black;text-align: left">{{playerObj.tname}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left"><button ng-click = 'delTeam($index)'>Remove Team</button></td>
+        </tr>
+      </table>
+</div>
