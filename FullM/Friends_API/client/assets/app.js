@@ -2,18 +2,18 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMessages']);
 
 myApp.config(function ($routeProvider) {
   $routeProvider
-  .when('/',{
-    templateUrl: 'partials/players.html',
-    controller: 'PlayersController'
+  // .when('/',{
+  //   templateUrl: 'index.html',
+  //   controller: 'editController'
+  // })
+  .when('/edit',{
+    templateUrl: 'partials/edit.html',
+    controller: 'editController'
   })
-  // .when('/teams',{
-  //   templateUrl: 'partials/teams.html',
-  //   controller: 'TeamsController'
-  // })
-  // .when('/associations',{
-  //   templateUrl: 'partials/associations.html',
-  //   controller: 'AssociationsController'
-  // })
+  .when('/new',{
+    templateUrl: 'partials/new.html',
+    controller: 'newController'
+  })
   // .when('/:teamname',{
   //   templateUrl: 'partials/teams.html'
   // })
@@ -22,23 +22,14 @@ myApp.config(function ($routeProvider) {
   });
 });
 
-myApp.factory('playerFactory',['$http', function ($http){
-  var factory = {};
-
-  var players = [
+myApp.factory('editFactory',['$http', function ($http){
+  // var factory = {};
+  // var players = [
     // {
     //   pname: "Speros",
     //   tname: "Seahawks"
     // },
-    // {
-    //   pname: "Jimmy",
-    //   tname: "49ers"
-    // },
-    // {
-    //   pname: "Jay",
-    //   tname: "Honeybadgers",
-    // },
-  ];
+  // ];
   // factory.index = function (callback){
   //
   //   // http request to back end
@@ -64,26 +55,20 @@ myApp.factory('playerFactory',['$http', function ($http){
   //   callback(players);
   // }
 
-  return factory;
+  // return factory;
 
 }]);
 
-myApp.factory('teamFactory',['$http', function ($http){
-  var teams = [
-    // {
-    //   tname: "Seahawks",
-    // },
-    // {
-    //   tname: "49ers",
-    // },
-    // {
-    //   tname: "Honeybadgers",
-    // },
-  ];
-  var factory ={};
-  factory.index = function (callback){
-    callback(teams);
-  }
+myApp.factory('newFactory',['$http', function ($http){
+  // var teams = [
+  //   {
+  //     tname: "Seahawks",
+  //   },
+  // ];
+  // var factory ={};
+  // factory.index = function (callback){
+  //   callback(teams);
+  // }
   // factory.addTeam = function(team, callback){
   //   teams.push(team);
   //   callback(teams);
@@ -91,14 +76,14 @@ myApp.factory('teamFactory',['$http', function ($http){
   // factory.delTeam = function(id, callback){
   //   teams.splice(id,1);
   //   callback(teams);
-  }
-  return factory;
+  // }
+  // return factory;
   }]);
-myApp.controller('PlayersController', ['$scope', 'playerFactory', function ($scope, playerFactory){
-      function setPlayers(data){
+myApp.controller('editController', ['$scope', 'editFactory', function ($scope, editFactory){
+      // function setPlayers(data){
     //     $scope.players = data;
     //     $scope.player = {};
-    //   }
+      // }
      //
     //  playerFactory.index(function(data){
     //    $scope.players = data;
@@ -118,8 +103,8 @@ myApp.controller('PlayersController', ['$scope', 'playerFactory', function ($sco
     //     playerFactory.delTeam(id,setPlayers);
     //     }
     }]);
-myApp.controller('TeamsController', ['$scope', 'teamFactory', '$routeParams', function ($scope, teamFactory, $routeParams){
-      function setTeams(data){
+// myApp.controller('TeamsController', ['$scope', 'teamFactory', '$routeParams', function ($scope, teamFactory, $routeParams){
+      // function setTeams(data){
       //   $scope.teams = data;
       //   $scope.team ={};
       // }
@@ -134,9 +119,9 @@ myApp.controller('TeamsController', ['$scope', 'teamFactory', '$routeParams', fu
       //   teamFactory.delTeam(id,setTeams);
       //   }
       //   console.log($routeParams)
-    }]);
+    // }]);
 
-myApp.controller('AssociationsController', ['$scope', 'playerFactory', 'teamFactory', function ($scope, playerFactory, teamFactory){
+myApp.controller('newController', ['$scope', 'newFactory', 'editFactory', function ($scope, newFactory, editFactory){
 
       // playerFactory.index(function(data){
       //
