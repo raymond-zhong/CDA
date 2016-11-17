@@ -7,31 +7,38 @@ function FriendsController(){
   this.index = function(req,res){
     Friend.find({}, function(err, friends){
     if (err) {console.log(err); }
-    res.json({placeholder:'index'});
+    res.json(friends);
   })
   };
   this.create = function(req,res){
-    Friend.create(req.body, function(err, result){
+    console.log(req.body);
+
+    var new_friend = new Friend(req.body);
+    // validation?
+    res.json({error: 'You cant do that'})
+    new_friend.save(req.body, function(err, friends){
     if (err) { console.log(err);}
-    res.json({placeholder:'create'});
+    res.json(friends);
   })
   };
   this.update = function(req,res){
-    Friend.update({_id: req.params.id},req.body, function(err, result){
+    Friend.update({_id: req.params.id},req.body, function(err, friends){
+      console.log(req.body);
     if (err) { console.log(err);}
-    res.json({placeholder:'update'});
+    res.json(friends);
   })
 };
   this.delete = function(req,res){
     Friend.remove({_id: req.params.id}, function(err, friends){
       if (err) { console.log(err);}
-    res.json({placeholder:'delete'});
+    res.json(friends);
   })
   };
   this.show = function(req,res){
-    Friend.find({_id: req.params.id}, function(err, friends){
+    // console.log(req.params.id)
+    Friend.findOne({_id: req.params.id}, function(err, friend){
     if (err) {console.log(err); }
-    res.json({placeholder:'show'});
+    res.json(friend);
   });
   }
 }

@@ -47,7 +47,7 @@ myApp.config(function ($routeProvider) {
             redirectTo: '/'
           });
       });
-myApp.controller('CustomizeUsersController', ['$scope', 'userFactory', function ($scope, userFactory){
+myApp.controller('CustomizeUsersController', ['$scope', 'userFactory', '$location', function ($scope, userFactory, $location){
       function setUsers(data){
         $scope.users = data;
         $scope.user ={};
@@ -61,14 +61,15 @@ myApp.controller('CustomizeUsersController', ['$scope', 'userFactory', function 
       $scope.index();
       $scope.addUser = function(){
         userFactory.addUser($scope.newUser, setUsers);
+        $location.url('/list');
         }
         // $scope.delUser = function(val){
         //   console.log(val);
         //   $scope.users.splice(val,1);
         // }
-        $scope.delUser = function(id){
-          userFactory.delUser(id,setUsers);
-          }
+      $scope.delUser = function(id){
+        userFactory.delUser(id,setUsers);
+        }
     }]);
   myApp.controller('UserListController', ['$scope', 'userFactory', function ($scope, userFactory){
         function setUsers(data){

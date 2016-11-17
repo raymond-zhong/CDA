@@ -1,0 +1,21 @@
+<div id ="left" style="display:inline-block;">
+  <h1>hello</h1>
+      <table style="border-collapse: collapse;width:500px;">
+        <tr style="background-color: #dddddd">
+          <th style="padding:8px;border:1px solid black;text-align: left">Name</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Show</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Update</th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Delete</th>
+        </tr>
+        <tr ng-repeat="friend in friends">
+          <td style="padding:8px;border:1px solid black;text-align: left">{{friend.Fname}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left"><a href="#/friends/{{friend._id}}">show</a></td>
+          <td style="padding:8px;border:1px solid black;text-align: left"><a href="#/friends/{{friend._id}}">edit</a></td>
+          <td style="padding:8px;border:1px solid black;text-align: left"><a href="#/friends/{{friend._id}}">delete</a></td>
+        </tr>
+      </table>
+</div>
+<div id ="right" style="display:inline-block">
+<input type="text" placeholder="Filter: Birthday!" ng-model="filter_all"style="display:block;vertical-align:top;"></br>
+<button style="display:inline-block;" ng-click = 'newFriend()'style="display:block;vertical-align:bottom;">New Friend</button>
+</div>

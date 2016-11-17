@@ -1,5 +1,30 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMessages']);
+
+myApp.config(function ($routeProvider) {
+  $routeProvider
+  .when('/',{
+    templateUrl: 'partials/players.html',
+    controller: 'PlayersController'
+  })
+  .when('/teams',{
+    templateUrl: 'partials/teams.html',
+    controller: 'TeamsController'
+  })
+  .when('/associations',{
+    templateUrl: 'partials/associations.html',
+    controller: 'AssociationsController'
+  })
+  .when('/:teamname',{
+    templateUrl: 'partials/teams.html'
+  })
+  .otherwise({
+    redirectTo: '/'
+  });
+});
+
 myApp.factory('playerFactory',['$http', function ($http){
+  var factory = {};
+
   var players = [
     {
       pname: "Speros",
@@ -14,11 +39,14 @@ myApp.factory('playerFactory',['$http', function ($http){
       tname: "Honeybadgers",
     },
   ];
-  var factory ={};
   factory.index = function (callback){
+
+    // http request to back end
+
     callback(players);
   }
   factory.addPlayer = function(player, callback){
+
     players.push(player);
     callback(players);
   }
@@ -28,14 +56,18 @@ myApp.factory('playerFactory',['$http', function ($http){
     callback(players);
   }
   factory.addTeam = function(data){
+
     players[data.playerIdx].tname = data.team;
   }
   factory.delTeam = function(id, callback){
     players[id].tname = "";
     callback(players);
   }
+
   return factory;
-  }]);
+
+}]);
+
 myApp.factory('teamFactory',['$http', function ($http){
   var teams = [
     {
@@ -63,40 +95,32 @@ myApp.factory('teamFactory',['$http', function ($http){
   }
   return factory;
   }]);
-myApp.config(function ($routeProvider) {
-           $routeProvider
-             .when('/',{
-                  templateUrl: 'partials/players.html',
-                controller: 'PlayersController'
-
-             })
-          .when('/teams',{
-              templateUrl: 'partials/teams.html',
-            controller: 'TeamsController'
-          })
-          .when('/associations',{
-              templateUrl: 'partials/associations.html',
-            controller: 'AssociationsController'
-          })
-          .otherwise({
-            redirectTo: '/'
-          });
-      });
 myApp.controller('PlayersController', ['$scope', 'playerFactory', function ($scope, playerFactory){
       function setPlayers(data){
         $scope.players = data;
-        $scope.player ={};
+        $scope.player = {};
       }
-      // $scope.players{};
-      // $scope.player{};
+      // // $scope.players{};
+      // // $scope.player{};
+      //
+      // $scope.index=function(){
+      //   playerFactory.index(setPlayers);
+      // }
+      // $scope.index();
 
-      $scope.index=function(){
-        playerFactory.index(setPlayers);
-      }
-      $scope.index();
+     playerFactory.index(function(data){
+       $scope.players = data;
+       $scope.player = {}
+     })
+
+
+
       $scope.addPlayer = function(){
-        playerFactory.addPlayer($scope.newPlayer, setPlayers);
-        }
+        playerFactory.addPlayer($scope.newPlayer, function(data){
+          $scope.players = data;
+          $scope.player = {}
+        });
+      }
         // $scope.delUser = function(val){
         //   console.log(val);
         //   $scope.users.splice(val,1);
@@ -108,7 +132,7 @@ myApp.controller('PlayersController', ['$scope', 'playerFactory', function ($sco
         playerFactory.delTeam(id,setPlayers);
         }
     }]);
-myApp.controller('TeamsController', ['$scope', 'teamFactory', function ($scope, teamFactory){
+myApp.controller('TeamsController', ['$scope', 'teamFactory', '$routeParams', function ($scope, teamFactory, $routeParams){
       function setTeams(data){
         $scope.teams = data;
         $scope.team ={};
@@ -126,8 +150,22 @@ myApp.controller('TeamsController', ['$scope', 'teamFactory', function ($scope, 
       $scope.delTeam = function(id){
         teamFactory.delTeam(id,setTeams);
         }
+        console.log($routeParams)
     }]);
+
 myApp.controller('AssociationsController', ['$scope', 'playerFactory', 'teamFactory', function ($scope, playerFactory, teamFactory){
+
+      playerFactory.index(function(data){
+
+      })
+
+      teamFactory.index(function(data){
+
+      })
+
+
+
+
       function setPlayers(data){
         $scope.players = data;
         $scope.player ={};
@@ -148,4 +186,4 @@ myApp.controller('AssociationsController', ['$scope', 'playerFactory', 'teamFact
       $scope.delTeam = function(id){
         playerFactory.delTeam(id,setTeams);
         }
-    }]);
+}]);

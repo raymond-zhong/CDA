@@ -46,24 +46,24 @@ Users Controller
 
       <input type='text' placeholder="First Name " ng-model='newUser.fname'></br>
       <input type='text' placeholder="Last Name" ng-model='newUser.lname'></br>
-      <input type="text" placeholder="Favorite Language" ng-model='newUser.flang'>
+      <input type="text" placeholder="Favorite Language" ng-model='newUser.flang'></br>
       <input type="date" placeholder="Date" ng-model='newUser.date'></br>
       <input type='submit' value='Create User' ng-click='addUser()'>
       <hr>
       Search Friends: <input type="text" ng-model="filter_all"></br>
       <hr>
       Sort by:</br>
-      <input type='text' placeholder="First Name" ng-model='search.fname'></br>
+      <!-- <input type='text' placeholder="First Name" ng-model='search.fname'></br>
       <input type='text' placeholder="Last Name" ng-model='search.lname'></br>
       <input type="text" placeholder="Favorite Language" ng-model='search.flang'></br>
-      <input type="date" placeholder="Date" ng-model='search.date'>
+      <input type="date" placeholder="Date" ng-model='search.date'> -->
       <table style="width:100%;border-collapse: collapse">
         <tr style="background-color: #dddddd">
           <th style="padding:8px;border:1px solid black;text-align: left"><button ng-click ="fname">First Name</button></th>
-          <th style="padding:8px;border:1px solid black;text-align: left">Last Name</th>
-          <th style="padding:8px;border:1px solid black;text-align: left">Fav Language</th>
-          <th style="padding:8px;border:1px solid black;text-align: left">Date</th>
-          <th style="padding:8px;border:1px solid black;text-align: left">Actions</th>
+          <th style="padding:8px;border:1px solid black;text-align: left"><button ng-click ="lname">Last Name</button></th>
+          <th style="padding:8px;border:1px solid black;text-align: left"><button ng-click ="flang">Fav Language</button></th>
+          <th style="padding:8px;border:1px solid black;text-align: left"><button ng-click ="date">Date</button></th>
+          <th style="padding:8px;border:1px solid black;text-align: left"><button ng-click ="fname">Actions</th>
 
         </tr>
         <tr id="searchObjResults" ng-repeat="userObj in users | orderBy:'fname' | filter:filter_all track by $index ">

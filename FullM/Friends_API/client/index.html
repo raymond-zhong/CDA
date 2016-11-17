@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app='myApp'>
+<html lang="en" >
 <head>
 	<meta charset="UTF-8">
 	<title>Awesome Friends</title>
@@ -8,13 +8,15 @@
   <script src="angular-route/angular-route.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
 	<!-- End Bower Components -->
-  <script src="assets/app.js" charset="utf-8"></script>
-  <script>
-      </script>
+	<!--We load all our modularized javascript files-->
+      <script type="text/javascript" src="/assets/factories/friendsFactory.js"></script>
+      <script type="text/javascript" src="/assets/controllers/newController.js"></script>
+      <script type="text/javascript" src="/assets/controllers/editController.js"></script>
+      <script type="text/javascript" src="/assets/controllers/indexController.js"></script>
+			<script type="text/javascript" src="/assets/app.js"  charset="utf-8"></script>
 </head>
-<body>
-  <h1>Welcome!</h1>
-  <a href="#/"><h2>Home</a>  <a href="#/new">New</a> <a href="#/edit">Edit</h2></a>
+<body ng-app='myApp'>
+  <a href="#/">Home</a>
   <div ng-view="">
   </div>
 </body>

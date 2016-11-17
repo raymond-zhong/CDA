@@ -8,7 +8,7 @@
           <th style="padding:8px;border:1px solid black;text-align: left">Actions</th>
         </tr>
         <tr id="searchObjResults" ng-repeat="playerObj in teams track by $index ">
-          <td style="padding:8px;border:1px solid black;text-align: left">{{playerObj.tname}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left"><a href="#/{{playerObj.tname}}">{{playerObj.tname}}</a></td>
           <td style="padding:8px;border:1px solid black;text-align: left"><button ng-click = 'delTeam($index)'>Remove Team</button></td>
         </tr>
       </table>

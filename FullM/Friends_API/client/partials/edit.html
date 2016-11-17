@@ -1,23 +1,8 @@
-<div ng-controller='editController' style="padding:10px;border:1px solid black;">
-<form>
-<h1>Edit.html</h1>
-<!-- <form name='playerForm'>
-      <center>Name <input type='text' name='name' placeholder="Player Name" ng-model='newPlayer.pname' ng-minlength='4' required>
-      <input type='submit' value='Add Player' ng-click='addPlayer()'></center></form>
-      <div ng-messages="playerForm.name.$error">
-    <center><p ng-message="minlength">The player name is too short.</p></center>
-    <center><p ng-message="required">The player name is required.</p></center>
-</div>
-      <hr>
-      <table style="width:100%;border-collapse: collapse">
-        <tr style="background-color: #dddddd">
-          <th style="padding:8px;border:1px solid black;text-align: left">Name</th>
-          <th style="padding:8px;border:1px solid black;text-align: left">Actions</th>
-        </tr>
-        <tr id="searchObjResults" ng-repeat="playerObj in players track by $index ">
-          <td style="padding:8px;border:1px solid black;text-align: left">{{playerObj.pname}}</td>
-          <td style="padding:8px;border:1px solid black;text-align: left"><button ng-click = 'delPlayer($index)'>Remove Player</button></td>
-        </tr>
-      </table> -->
-    </form>
-</div>
+<form style="padding:10px;border:1px solid black;">
+  <input type='text' name='fname' ng-model='friend.Fname' > First Name</br>
+  <input type='text' name='lname' ng-model='friend.Lname'> Last Name</br>
+  <input type='date' name='birthday' ng-model='friend.Birthday' ng-change="test()"> Birthday</br>
+      <button type='submit' ng-click='updateFriend()'>Update</button>
+</form>
+{{friend.Birthday | date}}
+<!-- ng-change="test()" -->

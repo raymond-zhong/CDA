@@ -1,0 +1,8 @@
+<div ng-controller='editController' style="padding:10px;border:1px solid black;">
+  <form>
+  <input type='text' name='fname' placeholder="Friend.fname" ng-model='newFriend.fname' ng-minlength='4' required> First Name
+  <input type='text' name='lname' placeholder="Friend.lname" ng-model='newFriend.lname' ng-minlength='4' required> Last Name
+  <input type='date' name='birthday' placeholder="Friend.lname" ng-model='newFriend.birthday' required> Birthday
+  <input type='submit' value='Edit' ng-click='editFriend()'>
+  </form>
+</div>

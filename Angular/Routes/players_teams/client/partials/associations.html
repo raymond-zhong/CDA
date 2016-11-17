@@ -2,6 +2,7 @@
       <center>
       <form>
         <select ng-model="newTeam.playerIdx">
+          <!-- option disabled -->
           <option ng-selected="{{operator.value == newTeam.playerIdx}}" ng-repeat="playerObj in players" value="{{$index}}" ng-bind="playerObj.pname" >{{playerObj.pname}}</option>
         </select>
           <select ng-model="newTeam.team" ng-init="newTeam.team = teams[0].tname">

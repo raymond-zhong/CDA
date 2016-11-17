@@ -1,6 +1,11 @@
 <div ng-controller='PlayersController' style="padding:10px;border:1px solid black;">
-      <center>Name <input type='text' placeholder="Player Name" ng-model='newPlayer.pname'>
-      <input type='submit' value='Add Player' ng-click='addPlayer()'></center>
+<form name='playerForm'>
+      <center>Name <input type='text' name='name' placeholder="Player Name" ng-model='newPlayer.pname' ng-minlength='4' required>
+      <input type='submit' value='Add Player' ng-click='addPlayer()'></center></form>
+      <div ng-messages="playerForm.name.$error">
+    <center><p ng-message="minlength">The player name is too short.</p></center>
+    <center><p ng-message="required">The player name is required.</p></center>
+</div>
       <hr>
       <table style="width:100%;border-collapse: collapse">
         <tr style="background-color: #dddddd">

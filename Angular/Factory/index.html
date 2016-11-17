@@ -1,0 +1,89 @@
+<html>
+<head>
+  <title></title>
+  <script src='bower_components/angular/angular.js'></script>
+  <script type='text/javascript'>
+    var myApp = angular.module('myApp', []);
+    myApp.factory('productFactory',['$http', function ($http){
+    // The factory is nothing more than a function that returns an object
+    var products = [
+      {
+        name: "Keyboard",
+        price: 149.00,
+      },
+      {
+        name: "Mouse",
+        price: 59.99,
+      },
+      {
+        name: "Basketball",
+        price: 59.99,
+      },
+    ];
+    var factory = {};
+    // Add a getProducts key to the factory object with a value of a function.
+    factory.index = function (callback){
+        // Pass the products to a callback to be used by whoever calls the method
+        callback(products);
+    }
+    // Most important step: return the object so it can be used by the rest of our angular code
+    factory.addProduct = function(product, callback){
+    if(product.price && Number(parseFloat(product.price))==product.price){
+      products.push(product);
+      callback(products);
+    }
+    else{
+    console.log("error not a number")
+  }
+  }
+    factory.delProduct = function(id, callback){
+      console.log(id);
+      products.splice(id,1);
+      callback(products);
+    }
+    return factory;
+}]);
+    myApp.controller('productsController', ['$scope', 'productFactory', function ($scope, productFactory){
+      // we don't need a factory for this demo, it wouldn't make a difference if we did.
+        function setProducts(data){
+          $scope.products = data;
+          $scope.product = {};
+        }
+        $scope.product = {};
+        $scope.products = {};
+
+        $scope.index=function(){
+          productFactory.index(setProducts);
+        }
+        $scope.index();
+        $scope.addProduct=function(){
+          productFactory.addProduct($scope.product, setProducts);
+        }
+        $scope.delProduct = function(id){
+          productFactory.delProduct(id,setProducts);
+        }
+    }]);
+  </script>
+</head>
+<body ng-app='myApp'>
+Products Controller
+    <div ng-controller='productsController' style="padding:10px;border:1px solid black;">
+      <input type='text' placeholder="Product Name" ng-model='product.name'></br>
+      <input type='number' placeholder="Product Price" ng-model='product.price'></br>
+      <input type='submit' value='Add Product' ng-click='addProduct()'>
+      <hr>
+      <table style="width:100%;border-collapse: collapse">
+        <tr style="background-color: #dddddd">
+          <th style="padding:8px;border:1px solid black;text-align: left"><button ng-click ="filter()">Product Name</button></th>
+          <th style="padding:8px;border:1px solid black;text-align: left"><button ng-click ="sort_price()">Price</button></th>
+          <th style="padding:8px;border:1px solid black;text-align: left">Actions</th>
+        </tr>
+        <tr id="searchObjResults" ng-repeat="productObj in products track by $index ">
+          <td style="padding:8px;border:1px solid black;text-align: left">{{productObj.name}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left">{{productObj.price | currency:"$"}}</td>
+          <td style="padding:8px;border:1px solid black;text-align: left"><button ng-click = 'delProduct($index)'>Delete Product</button></td>
+        </tr>
+      </table>
+</div>
+</body>
+</html>
